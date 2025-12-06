@@ -1,0 +1,41 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "companies"
+    label: "Companies"
+    folder: "data/companies"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    fields:
+      - {label: "Company ID", name: "id", widget: "string", hint: "Unique identifier (use in QR code)"}
+      - {label: "Company Name", name: "name", widget: "string"}
+      - {label: "Logo", name: "logo", widget: "image", required: false}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Website", name: "website", widget: "string", required: false}
+      - {label: "Email", name: "email", widget: "string", required: false}
+      - {label: "Phone", name: "phone", widget: "string", required: false}
+      - {label: "Address", name: "address", widget: "text", required: false}
+      - label: "Social Media"
+        name: "social"
+        widget: "object"
+        required: false
+        fields:
+          - {label: "Facebook", name: "facebook", widget: "string", required: false}
+          - {label: "Instagram", name: "instagram", widget: "string", required: false}
+          - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+          - {label: "Twitter", name: "twitter", widget: "string", required: false}
+      - label: "Additional Info"
+        name: "additionalInfo"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "Label", name: "label", widget: "string"}
+          - {label: "Value", name: "value", widget: "text"}
+      - {label: "Active", name: "active", widget: "boolean", default: true}
