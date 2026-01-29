@@ -14,9 +14,9 @@
 
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="stylesheet" href="src/css/qrStyle.css">
+    <link rel="stylesheet" href="src/css/lang.css">
   </head>
   <body>
-    <!-- Main content wrapper to push footer down -->
     <main>
       <div id="company-result"></div>
     </main>
@@ -31,16 +31,11 @@
         </p>
       </div>
     </div>
-
-    <button class="switch_button" id="switch_button">switch</button>
+    <button id="switch_button" aria-label="Switch Language">
+      <img id="flag-icon" src="https://flagcdn.com/w80/se.png" alt="SE">
+    </button>
     <footer class="site-footer">
       <div class="footer-container">
-        <!-- 
-           FLATTENED STRUCTURE for space-evenly:
-           1. Logo 1
-           2. Logo 2
-           3. Button
-        -->
         <a href="https://www.molekylverkstan.se/" target="_blank">
           <img
             src="src/assets/icons/molen_favicon.png"
@@ -60,7 +55,6 @@
           >
         </a>
 
-        <!-- Button placed directly here as the 3rd item -->
         <button id="qr-fab-button" aria-label="Skanna QR-kod">
           <div class="icon-container">
             <svg
@@ -94,7 +88,6 @@
         </button>
       </div>
     </footer>
-
     <!-- Scripts -->
     <script type="module" src="src/js/firebase.mjs"></script>
     <script type="module" src="src/js/qr-reader.mjs"></script>

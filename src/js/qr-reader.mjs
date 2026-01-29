@@ -23,7 +23,7 @@ function checkUrlAndLoadCompany() {
     const result_div = document.getElementById("company-result");
     // UPDATED TEXT: Refers to "footer" instead of "bottom right"
     result_div.innerHTML =
-      '<p id="title-text">Scan a QR code to view company information by pressing the button located in the footer.</p>';
+      '<p id="title-text">Skanna en QR-kod för att se företagsinformation genom att trycka på knappen längst ner till höger</p>';
   }
 }
 
@@ -69,16 +69,16 @@ function displayCompany(company) {
       
       <div class="company-details">
         <div class="detail-item">
-          <strong>Industry:</strong> ${company.industry}
+          <strong>Industri:</strong> ${company.industry}
         </div>
         <div class="detail-item">
-          <strong>Founded:</strong> ${company.founded}
+          <strong>Grundad:</strong> ${company.founded}
         </div>
         <div class="detail-item">
-          <strong>Employees:</strong> ${company.employees}
+          <strong>Anställda:</strong> ${company.employees}
         </div>
         <div class="detail-item">
-          <strong>Website:</strong> 
+          <strong>Hemsida:</strong> 
           <a href="${company.website}" target="_blank">${company.website}</a>
         </div>
       </div>

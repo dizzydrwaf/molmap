@@ -1,31 +1,48 @@
 const switch_button = document.getElementById("switch_button");
-let lang_mode = "se";
+const flag_icon = document.getElementById("flag-icon");
 
-async function switchLang() {
-  const result = await getData();
-  document.getElementById("title-text").innerText =
-    result.lang[lang_mode].title;
-  document.getElementById("qr-code-instruction").innerText =
-    result.lang[lang_mode].qrCode;
-  lang_mode = lang_mode === "se" ? "en" : "se";
-}
+let lang_mode = "se";
+let cached_data = null;
 
 async function getData() {
+  if (cached_data) return cached_data;
   try {
     const response = await fetch("./src/js/lang.json");
-
     if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
+      throw new Error(`Status: ${response.status}`);
     }
-
-    const result = await response.json();
-    /* console.log(result.lang.se.title, "test"); */
-    return result;
+    cached_data = await response.json();
+    return cached_data;
   } catch (_error) {
-    /* console.error(error.message); */
+    return null;
   }
 }
 
+async function updateContent() {
+  const result = await getData();
+
+  if (result) {
+    document.getElementById("title-text").innerText =
+      result.lang[lang_mode].title;
+    document.getElementById("qr-code-instruction").innerText =
+      result.lang[lang_mode].qrCode;
+
+    if (lang_mode === "se") {
+      flag_icon.src = "https://flagcdn.com/w80/se.png";
+      flag_icon.alt = "SE";
+    } else {
+      flag_icon.src = "https://flagcdn.com/w80/gb.png";
+      flag_icon.alt = "GB";
+    }
+  }
+}
+
+function handleSwitch() {
+  lang_mode = lang_mode === "se" ? "en" : "se";
+  updateContent();
+}
+
 if (switch_button) {
-  switch_button.addEventListener("click", switchLang);
+  switch_button.addEventListener("click", handleSwitch);
+  updateContent();
 }
